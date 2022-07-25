@@ -50,7 +50,7 @@ body {
 .percent {
   stroke-dasharray: 100;
   transition: all 1s linear;
-  stroke: rgb(124, 45, 45);
+  stroke: var(--maincolor);
 }
 
 .loader {
@@ -58,7 +58,7 @@ body {
   min-width: 0%;
   height: 100%;
   width: 0%;
-  background-color: rgb(124, 45, 45);
+  background-color: var(--maincolor);
 }
 
 .center-count {

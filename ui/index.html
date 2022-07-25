@@ -5,14 +5,14 @@
   </head>
   <body>
     <div id="app">
-      <div class="wrapper linear-progress" v-if="visible && theme == 'linear'">
+      <div class="wrapper linear-progress" v-if="visible && theme == 'linear'" :style="{'--maincolor': maincolor}">
         <div
           class="loader"
           :style="`animation-name: growprogress; animation-duration: ${time}ms; animation-timing-function: linear;`"
         ></div>
         <div class="message">{{message}}</div>
       </div>
-      <div class="wrapper" v-if="visible && theme == 'circle'">
+      <div class="wrapper" v-if="visible && theme == 'circle'" :style="{'--maincolor': maincolor}">
         <div class="circle-progress">
           <svg width="64" height="64" viewBox="0 0 64 64">
             <circle
@@ -39,7 +39,7 @@
           <div>{{message}}</div>
         </div>
       </div>
-      <div class="wrapper" v-if="visible && theme == 'innercircle'">
+      <div class="wrapper" v-if="visible && theme == 'innercircle'" :style="{'--maincolor': maincolor}">
         <div class="circle-progress">
           <div style="position:relative;">
             <svg width="64" height="64" viewBox="0 0 64 64">
