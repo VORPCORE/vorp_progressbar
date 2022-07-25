@@ -23,6 +23,7 @@
 | time | how long the progress should display (in milliseconds) |
 | callback | function that will get called when the progress is done |
 | theme | What you want the progress bar/circle to look like |
+| color | What color (hex or rgb) do you want the progress loader to be. Defaults to a dark red. |
 
 ##### Theme Options
 | Option | Info |
@@ -31,11 +32,17 @@
 | circle | Shows a circle progress bar |
 | innercircle | Shows a circle progress bar with a seconds countdown in the middle |
 
-_**Example:**_
+_**Examples:**_
  ```lua
-        progressbar.start(_U('PlaceFire'), 20000, function ()
+        progressbar.start('Loading...', 20000, function ()
             print('DONE!!!!')
-        end, 'linear')
+        end, 'linear', '#ff0000')
+ ```
+
+ ```lua
+        progressbar.start('Loading...', 20000, function ()
+            print('DONE!!!!')
+        end)
  ```
 
 ## Need More Support? 
