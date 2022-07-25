@@ -45,6 +45,10 @@ _**Examples:**_
         end)
  ```
 
+## Screenshots
+![image](https://user-images.githubusercontent.com/10902965/180728629-846600e0-9702-4748-a32b-7e5aa7f9241b.png)
+![image](https://user-images.githubusercontent.com/10902965/180728658-8be2bbd5-a62c-4888-9515-083194ff678e.png)
+
 ## Need More Support? 
 - [Vorp Disord](https://discord.gg/DHGVAbCj7N)
 
