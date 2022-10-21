@@ -22,7 +22,7 @@ exports('initiate',function()
             callback = cb
         })
     
-        SetNuiFocus(true, false)
+        SetNuiFocus(false, false)
         SendNUIMessage({
             type = 'vp-open',
             message = message,
