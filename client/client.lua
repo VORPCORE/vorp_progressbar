@@ -49,13 +49,12 @@ AddEventHandler('__cfx_export_progressBars_startUI', function(callback)
 end)
 
 RegisterNUICallback('ProgressFinished', function(args, nuicb)
-
-    if queue[1].focus == true then
+    if queue[1].focus ~= false then
         SetNuiFocus(false, false)
     end
 
     if queue[1].callback then
-        queue[1].callback() 
+        queue[1].callback()
     end
 
     table.remove(queue, 1) -- Remove prog from queue 
