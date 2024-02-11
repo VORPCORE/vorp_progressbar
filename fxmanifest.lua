@@ -7,8 +7,8 @@ author 'VORP @Bytesizd'
 description 'A tool to use within your scripts for vorp core framework'
 repository 'https://github.com/VORPCORE/vorp_progressbar'
 
-shared_scripts 'config.lua'
-client_scripts 'client/client.lua'
+shared_script 'config.lua'
+client_script 'client/client.lua'
 
 files {
     'ui/*',
