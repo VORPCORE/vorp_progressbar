@@ -18,7 +18,7 @@ files {
 
 ui_page 'ui/index.html'
 
-provide 'progressBars'
+export "initiate"
 
 --dont touch
 version '1.2.0'
