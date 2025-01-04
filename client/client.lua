@@ -6,7 +6,7 @@ local function _internalStart(message, miliseconds, cb, theme, color, width, foc
     end
 
     if color == nil then
-        color = 'rgb(45, 5, 244)'
+        color = 'rgb(124, 45, 45)'
     end
     
     if width == nil then
