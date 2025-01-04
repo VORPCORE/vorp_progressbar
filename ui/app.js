@@ -1,5 +1,4 @@
 const { createApp } = Vue;
-
 createApp({
   data() {
     return {
@@ -12,7 +11,8 @@ createApp({
       timeout: null,
       running: false,
       maincolor: null,
-      width: '20vw'
+      width: "20vw",
+      cancelled: false,
     };
   },
   mounted() {
@@ -27,8 +27,8 @@ createApp({
   },
   computed: {
     counter() {
-      return Math.trunc((this.time - (this.currenttime))/1000)
-    }
+      return Math.trunc((this.time - this.currenttime) / 1000);
+    },
   },
   methods: {
     onMessage(event) {
@@ -37,26 +37,38 @@ createApp({
         this.message = event.data.message;
         this.theme = event.data.theme;
         this.time = event.data.mili;
-        this.maincolor = event.data.color
-        this.width = event.data.width
+        this.maincolor = event.data.color;
+        this.width = event.data.width;
+        this.cancelled = false;
         let that = this;
-        running = true
+        running = true;
 
         this.interval = setInterval(() => {
-          that.currenttime += 1000
+          that.currenttime += 1000;
         }, 1000);
 
         this.timeout = setTimeout(() => {
-          that.running = false
+          that.running = false;
           that.visible = false;
           clearInterval(that.interval);
-          that.currenttime = 0
-          that.interval = null
-          that.timeout = null
-          fetch(`https://${GetParentResourceName()}/ProgressFinished`, {
-            method: "POST"
-          });
+          that.currenttime = 0;
+          that.interval = null;
+          that.timeout = null;
+          if (!this.cancelled) {
+            fetch(`https://${GetParentResourceName()}/ProgressFinished`, {
+              method: "POST",
+            });
+          }
         }, event.data.mili);
+      }
+      if (event.data.type === "vp-cancel") {
+        this.cancelled = true;
+        this.running = false;
+        this.visible = false;
+        clearInterval(this.interval);
+        this.currenttime = 0;
+        this.interval = null;
+        this.timeout = null;
       }
     },
   },
