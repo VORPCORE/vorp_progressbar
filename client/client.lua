@@ -6,7 +6,7 @@ local function _internalStart(message, miliseconds, cb, theme, color, width, foc
     end
 
     if color == nil then
-        color = 'rgb(124, 45, 45)'
+        color = 'rgb(45, 5, 244)'
     end
     
     if width == nil then
@@ -46,6 +46,36 @@ AddEventHandler('__cfx_export_progressBars_startUI', function(callback)
     callback(function (time, text)
         _internalStart(text, time, nil, nil, nil, nil, false)
     end)
+end)
+
+exports('CancelNext', function(cb)
+    local cancelled = CancelNext()
+    if cb ~= nil then
+        cb(cancelled)
+    end
+end)
+
+function CancelNext()
+    local cancelled = {}
+    if queue[1] ~= nil then
+        if queue[1].focus ~= false then
+            SetNuiFocus(false, false)
+        end
+        SendNUIMessage({type = 'vp-cancel'})
+        cancelled = queue[1];
+        table.remove(queue, 1)
+    end
+    return cancelled;
+end
+
+exports('CancelAll', function(cb)
+    local cancelled = {}
+    while queue[1] ~= nil do
+        table.insert(cancelled, CancelNext())
+    end
+    if cb ~= nil then
+        cb(cancelled)
+    end
 end)
 
 RegisterNUICallback('ProgressFinished', function(args, nuicb)
