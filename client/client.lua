@@ -48,6 +48,36 @@ AddEventHandler('__cfx_export_progressBars_startUI', function(callback)
     end)
 end)
 
+function CancelNext()
+    local cancelled = {}
+    if queue[1] ~= nil then
+        if queue[1].focus ~= false then
+            SetNuiFocus(false, false)
+        end
+        SendNUIMessage({type = 'vp-cancel'})
+        cancelled = queue[1];
+        table.remove(queue, 1)
+    end
+    return cancelled;
+end
+
+exports('CancelNext', function(cb)
+    local cancelled = CancelNext()
+    if cb ~= nil then
+        cb(cancelled)
+    end
+end)
+
+exports('CancelAll', function(cb)
+    local cancelled = {}
+    while queue[1] ~= nil do
+        table.insert(cancelled, CancelNext())
+    end
+    if cb ~= nil then
+        cb(cancelled)
+    end
+end)
+
 RegisterNUICallback('ProgressFinished', function(args, nuicb)
     if queue[1].focus ~= false then
         SetNuiFocus(false, false)
