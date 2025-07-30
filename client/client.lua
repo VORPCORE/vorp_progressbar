@@ -21,7 +21,11 @@ local function _internalStart(message, miliseconds, cb, theme, color, width, foc
 
     -- Optional focus override. Defaults to true if nil.
     if focus == nil or focus == true then
-        SetNuiFocus(true, false)
+        if Config.DisableFocus then
+            SetNuiFocus(false, false)
+        else
+            SetNuiFocus(true, false)
+        end
     end
     
     SendNUIMessage({
