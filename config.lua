@@ -1,1 +1,3 @@
 Config = {}
+
+Config.DisableFocus = true -- If false the progressbar will block keys...
