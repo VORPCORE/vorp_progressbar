@@ -1,10 +1,10 @@
 # VORP ProgressBar
-> A Client side UI progressbar for vorp resources
+> A Client side UI progressbar for VORP Resources
 
 ## How to install
 * Download this repo
 * Copy and paste `vorp_progressbar` folder to `resources/vorp_progressbar`
-* Add `ensure <YOUR_RESOURCE_NAME>` to your `server.cfg` file
+* Add `ensure vorp_progressbar` to your `server.cfg` file
 * Now you are ready to get coding!
 
 ## How can I use this within my script?
@@ -59,7 +59,7 @@ _**Examples:**_
  ```
 
 ## Need More Support? 
-- [Vorp Disord](https://discord.gg/DHGVAbCj7N)
+- [VORP Core Discord](https://discord.gg/JjNYMnDKMf)
 
 ## Requirements
-- [VORP-Core](https://github.com/VORPCORE/VORP-Core/releases)
+- [VORP Core](https://github.com/VORPCORE/vorp_core)
